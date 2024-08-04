@@ -18,40 +18,31 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
  * protected
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users") //
 
 public class UserController {
 
-
-  @Autowired
+  @Autowired 
   private IUserRepository userRepository;
-// ResponseEntity para fazer a validação de dados se ja existe na tabela ou não.
+// ResponseEntity para fazer a validação de dados, se ja existe na tabela ou não.
   @PostMapping("/")
   public ResponseEntity create(@RequestBody UserModel userModel) {
     var user = this.userRepository.findByUsername(userModel.getUsername());
-
+    // Verificação para verificar se existe um username com o mesmo nome.
     if(user != null){
       // Mensagem de erro
-      // Status code
+      // Status code 400
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Usuario já existe");
     }
 
-    // Variavel criada para criptografia de senha.
+    // Atribuição da criptografia de senha para a variavel passwordHashred.
     var passwordHashred = BCrypt.withDefaults()
     .hashToString(12,userModel.getPassword().toCharArray());
 
     userModel.setPassword(passwordHashred);
 
-
-
-
-    
-
     var userCreated = this.userRepository.save(userModel);
-    return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
-
-
-
+    return ResponseEntity.status(HttpStatus.OK).body(userCreated);//status code 201 Created
   }
 
 }

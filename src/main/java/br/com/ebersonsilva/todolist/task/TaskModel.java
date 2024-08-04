@@ -21,21 +21,20 @@ public class TaskModel {
     private UUID id;
     private String description;
 
-    @Column(length = 50) //Definindo tamanho do campo de title.
+    @Column(length = 50) //Definindo tamanho de 50 caracteres no campo de title.
     private String title;
-    private LocalDateTime startAt;
-    private LocalDateTime endAt;
+    private LocalDateTime startAt; // Data de inicio 
+    private LocalDateTime endAt; // Data de fim  
     private String priority;
 
     private UUID idUser;
 
     @CreationTimestamp
-    private LocalDateTime createdAt;
-
+    private LocalDateTime createdAt; // Grava a data de quando a tarefa foi criada
+    // Exceção criada ao ultrapassar a magem de 50 caracteres no campo do title
     public void setTitle(String title)throws Exception {
         if (title.length() > 50){
             throw new Exception("O campo title deve conter no máximo 50 caracteres");
-
         }
         this.title = title;
     }

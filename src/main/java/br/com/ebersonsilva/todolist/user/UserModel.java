@@ -16,16 +16,15 @@ import lombok.Data;
 
 public class UserModel {
   @Id
-  @GeneratedValue(generator = "UUID")
+  @GeneratedValue(generator = "UUID") //Gera um UUID automaticamente.
 
   private UUID id;
-  @Column(unique = true)
+  @Column(unique = true) //Restrição para um atributo unico.
   private String username;
   private String name;
   private String password;
 
-
-  @CreationTimestamp
-  private LocalDateTime createdAt;
+  @CreationTimestamp //Cria uma data de criação da tabela
+  private LocalDateTime createdAt; 
 
 }

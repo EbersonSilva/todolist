@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.11</version>
+		<version>3.0.13</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.ebersonsilva</groupId>
@@ -27,26 +27,31 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- Dependencia do banco de dados H2 Database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- Dependencias do Lombak para melhorar a escrita dos Getters e Setters	 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.30</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- Dependencia para criptografar a senha do usuario ao salvar no banco de dados -->
 		<dependency>
     <groupId>at.favre.lib</groupId>
     <artifactId>bcrypt</artifactId>
     <version>0.10.2</version>
 </dependency>
+<!-- Dependencia developer tools para fazer um live reload -->
     <dependency> 
         <groupId> org.springframework.boot </groupId> 
         <artifactId> spring-boot-devtools </artifactId> 
